@@ -1,4 +1,4 @@
-# GeoDocker Accumulo
+# GeoDocker Accumulo (with GeoWave iterators loaded)
 
 [![Build Status](https://api.travis-ci.org/geodocker/geodocker-accumulo.svg)](http://travis-ci.org/geodocker/geodocker-accumulo)
 [![Docker Repository on Quay](https://quay.io/repository/geodocker/base/status "Docker Repository on Quay")](https://quay.io/repository/geodocker/accumulo)
@@ -18,7 +18,7 @@ This container has three roles that can be supplied as `CMD`:
 
 # Environment
   - `HADOOP_MASTER_ADDRESS` - hostname for accumulo root, required for all roles
-  - `ACCUMULO_ZOOKEEPERS` - list of zookeeper instance, at least one
+  - `ZOOKEEPERS` - list of zookeeper instance, at least one
   - `ACCUMULO_SECRET` - secret value for inter-instance communication
   - `INSTANCE_NAME` - accumulo instance name
   - `ACCUMULO_PASSWORD` - root password
