@@ -1,7 +1,7 @@
 # GeoDocker Accumulo (with GeoWave iterators loaded)
 
-[![Build Status](https://api.travis-ci.org/geodocker/geodocker-accumulo.svg)](http://travis-ci.org/geodocker/geodocker-accumulo)
-[![Docker Repository on Quay](https://quay.io/repository/geodocker/base/status "Docker Repository on Quay")](https://quay.io/repository/geodocker/accumulo)
+[![Build Status](https://api.travis-ci.org/geodocker/geodocker-accumulo.svg)](http://travis-ci.org/geodocker/geodocker-accumulo-geowave)
+[![Docker Repository on Quay](https://quay.io/repository/geodocker/base/status "Docker Repository on Quay")](https://quay.io/repository/geodocker/accumulo-geowave)
 [![Join the chat at https://gitter.im/geotrellis/geotrellis](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/geotrellis/geotrellis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Apache Accumulo](https://accumulo.apache.org/) container for [GeoDocker Cluster](https://github.com/geodocker/geodocker)
@@ -25,3 +25,9 @@ This container has three roles that can be supplied as `CMD`:
 
 # Testing
 This container should be tested with `docker-compose` and through `make test`
+
+# Use on Amazon EMR
+For information on the use of this container and its siblings on top of
+EMR, go
+[here](https://github.com/geodocker/geodocker-accumulo/tree/master/emr).
+
