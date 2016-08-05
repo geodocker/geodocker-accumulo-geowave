@@ -10,3 +10,7 @@ RUN set -x \
   && rpm -Uvh --replacepkgs http://s3.amazonaws.com/geowave-rpms/release/noarch/geowave-repo-1.0-3.noarch.rpm \
   && yum --enablerepo=geowave install -y geowave-${GEOWAVE_VERSION}-apache-accumulo \
   && yum --enablerepo=geowave install -y geowave-${GEOWAVE_VERSION}-apache-tools
+
+COPY ./fs /
+
+ENTRYPOINT [ "/sbin/geowave-entrypoint.sh" ]
