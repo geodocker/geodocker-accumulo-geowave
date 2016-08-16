@@ -1,4 +1,4 @@
 geowave-tools.sh
 *.jar
-*.zip
+archives/*.zip
 geowave-*/

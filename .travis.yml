@@ -17,6 +17,10 @@ before_install:
 - sudo mv -f docker-compose /usr/local/bin
 install:
 - make -e build
+cache:
+  directories:
+  - ./archives
+  - $HOME/.m2
 script:
 - make -e test
 before_deploy:

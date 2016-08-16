@@ -7,6 +7,7 @@ GEOWAVE_SHA := d8567e4892115813133b603c0cf7506906a43458
 BUILD_ARGS := "-Daccumulo.version=1.7.1 -Daccumulo.api=1.7 -Dhadoop.version=2.7.2 -Dgeotools.version=14.2 -Dgeoserver.version=2.8.3"
 EXTRA_ARGS := "-Dfindbugs.skip=true -DskipFormat=true -DskipITs=true -DskipTests=true"
 
+DIST_ARCHIVE := archives/${GEOWAVE_SHA}.zip
 SCRIPT := geowave-${GEOWAVE_SHA}/core/cli/src/main/resources/geowave-tools.sh
 TOOLS := geowave-${GEOWAVE_SHA}/deploy/target/geowave-deploy-${GEOWAVE_VERSION}-tools.jar
 PLUGINS := geowave-${GEOWAVE_SHA}/extensions/formats/geolife/target/geowave-format-geolife-${GEOWAVE_VERSION}.jar \
@@ -44,10 +45,10 @@ build:  ${SCRIPT} ${TOOLS} ${PLUGINS} ${ANALYTIC} ${ITERATORS}
 ${SCRIPT} ${TOOLS} ${PLUGINS} ${ANALYTIC} ${ITERATORS}:
 	make world
 
-${GEOWAVE_SHA}.zip:
-	curl -L -C - -O "https://github.com/ngageoint/geowave/archive/${GEOWAVE_SHA}.zip"
+${DIST_ARCHIVE}:
+	(cd archives ; curl -L -C - -O "https://github.com/ngageoint/geowave/archive/${GEOWAVE_SHA}.zip")
 
-geowave-${GEOWAVE_SHA}/: ${GEOWAVE_SHA}.zip
+geowave-${GEOWAVE_SHA}/: ${DIST_ARCHIVE}
 	unzip $<
 
 publish: build
@@ -70,4 +71,4 @@ cleaner: clean
 	rm -rf geowave-${GEOWAVE_SHA}/
 
 cleanest: cleaner
-	rm -f ${GEOWAVE_SHA}.zip
+	rm -f ${DIST_ARCHIVE}
