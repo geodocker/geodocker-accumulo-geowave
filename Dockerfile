@@ -1,15 +1,16 @@
 FROM quay.io/geodocker/accumulo:latest
 
-MAINTAINER Pomadchin Grigory, daunnc@gmail.com
+MAINTAINER Pomadchin Grigory <daunnc@gmail.com>
 
-ENV GEOWAVE_VERSION 0.9.1
+ARG GEOWAVE_VERSION
+ENV GEOWAVE_VERSION ${GEOWAVE_VERSION}
 ENV GEOWAVE_HOME /usr/local/geowave
 
-# GeoWave Iterators
-RUN set -x \
-  && rpm -Uvh --replacepkgs http://s3.amazonaws.com/geowave-rpms/release/noarch/geowave-repo-1.0-3.noarch.rpm \
-  && yum --enablerepo=geowave install -y geowave-${GEOWAVE_VERSION}-apache-accumulo \
-  && yum --enablerepo=geowave install -y geowave-${GEOWAVE_VERSION}-apache-tools
+ADD geowave-tools.sh ${GEOWAVE_HOME}/tools/
+ADD geowave-tools.jar ${GEOWAVE_HOME}/tools/
+ADD plugins/ ${GEOWAVE_HOME}/tools/plugins/
+ADD geowave-analytic-mapreduce.jar ${GEOWAVE_HOME}/tools/
+ADD geowave-accumulo.jar ${GEOWAVE_HOME}/accumulo/
 
 COPY ./fs /
 ENTRYPOINT [ "/sbin/geowave-entrypoint.sh" ]
