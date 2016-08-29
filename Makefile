@@ -3,7 +3,7 @@ ORG  := $(word 1, ${BASE})
 REPO := $(word 2, ${BASE})-$(word 3, ${BASE})
 IMG  := quay.io/${ORG}/${REPO}
 GEOWAVE_VERSION := 0.9.3-SNAPSHOT
-GEOWAVE_SHA := d8567e4892115813133b603c0cf7506906a43458
+GEOWAVE_SHA := 8760ce2cbc5c8a65c4415de62210303c3c1a9710
 BUILD_ARGS := "-Daccumulo.version=1.7.1 -Daccumulo.api=1.7 -Dhadoop.version=2.7.2 -Dgeotools.version=14.2 -Dgeoserver.version=2.8.3"
 EXTRA_ARGS := "-Dfindbugs.skip=true -DskipFormat=true -DskipITs=true -DskipTests=true"
 
